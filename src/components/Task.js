@@ -19,7 +19,7 @@ const TaskCard = styled.li`
   text-align: left;
   padding-left: 20px;
   box-sizing: border-box;
-  border: 1px solid rgba(0,0,0,.5)
+  border: 1px solid rgba(0,0,0,.5);
 `
 
 export default Task

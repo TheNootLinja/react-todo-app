@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import Task from './components/Task.js'
+// import Task from './components/Task';
+import TaskList from './components/TaskList';
 
 function App() {
   // Lockout state
@@ -53,18 +54,12 @@ function App() {
         <h1>ToDo List</h1>
         <p className='new-task-icon' onClick={changeLockoutVisible}>{lockoutVisible?"x":"+"}</p>
       </div>
-      <ul className='todo-card-list'>
-        {taskArr.map((task, index) => {
+      <TaskList taskArr={taskArr} removeTask={removeTask}>
+        {/* {taskArr.map((task, index) => {
           return <Task task={task} removeTask={removeTask}/>
-          // <li className='todo-card' key={task.taskId}>
-          //   <h1>{task.taskTitle}</h1>
-          //   <p>{task.taskDesc}</p>
-          //   <p>{task.taskDate}</p>
-          //   <button onClick={ () => removeTask(task.taskId)}>Delete</button>
-          // </li>
         }
-        )}
-      </ul>
+        )} */}
+      </TaskList>
     </div>
   );
 }
