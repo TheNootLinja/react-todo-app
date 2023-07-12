@@ -42,19 +42,15 @@ function App() {
   
   return (
     <div className="App">
-      {lockoutVisible ? (
-        <Lockout>
-          <NewTaskForm />
-          {/* <button className="close-lockout-btn" onClick={addTask}>New Task</button>
-          <button className="close-lockout-btn" onClick={changeLockoutVisible}>Close</button> */}
-        </Lockout>
-      ) : (
-        false
-      )}
       <div className="app-header-container">
         <h1>ToDo List</h1>
         <p className='new-task-icon' onClick={changeLockoutVisible}>{lockoutVisible?"x":"+"}</p>
       </div>
+      {lockoutVisible ? (
+        <NewTaskForm/>
+      ) : (
+        false
+      )}
       <TaskList taskArr={taskArr} removeTask={removeTask}>
         {/* {taskArr.map((task, index) => {
           return <Task task={task} removeTask={removeTask}/>
