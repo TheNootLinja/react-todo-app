@@ -1,7 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-// import Task from './components/Task';
 import TaskList from './components/TaskList';
+import NewTaskForm from './components/NewTaskForm';
+import Lockout from './components/Lockout';
 
 function App() {
   // Lockout state
@@ -12,7 +13,6 @@ function App() {
     setLockoutVisible(!lockoutVisible)
   }
 
-  // TODO: Write function for getting existing tasks from local storage on app load
   useEffect(() => {
     localStorage.getItem("existingTaskArr") ? setTaskArr(JSON.parse(localStorage.getItem("existingTaskArr"))) : setTaskArr([])
   },[])
@@ -43,10 +43,11 @@ function App() {
   return (
     <div className="App">
       {lockoutVisible ? (
-        <div className="lockout">
-          <button className="close-lockout-btn" onClick={addTask}>New Task</button>
-          <button className="close-lockout-btn" onClick={changeLockoutVisible}>Close</button>
-        </div>
+        <Lockout>
+          <NewTaskForm />
+          {/* <button className="close-lockout-btn" onClick={addTask}>New Task</button>
+          <button className="close-lockout-btn" onClick={changeLockoutVisible}>Close</button> */}
+        </Lockout>
       ) : (
         false
       )}
