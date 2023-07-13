@@ -1,23 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
-function NewTaskForm() {
+function NewTaskForm({addTask}) {
+
+  const [taskTitle, setTaskTitle] = useState('');
+  const [taskDesc, setTaskDesc] = useState('');
+  const [taskDate, setTaskDate] = useState('');
+
+  const handleTitleChange = (e) => {
+    setTaskTitle(e.target.value);
+  }
+  const handleDescChange = (e) => {
+    setTaskDesc(e.target.value);
+  }
+  const handleDateChange = (e) => {
+    setTaskDate(e.target.value);
+  }
+
   return (
     <NewTaskFormDiv>
         <h2>New Task</h2>
         <div className="input-container">
           <label htmlFor="title">Task</label>
-          <input id="title" type="text" />
+          <input value={taskTitle} onChange={handleTitleChange} id="title" type="text" />
         </div>
         <div className="input-container">
           <label htmlFor="description">Description</label>
-          <textarea id="description" name="description" type="text" rows="4" cols="50" />
+          <textarea value={taskDesc} onChange={handleDescChange} id="description" name="description" type="text" rows="4" cols="50" />
         </div>
         <div className="input-container">
           <label htmlFor="date">Date</label>
-          <input id="date" type="date" />
+          <input value={taskDate} onChange={handleDateChange} id="date" type="date" />
         </div>
-        <button>Save Task</button>
+        <button onClick={() => addTask(taskTitle, taskDesc, taskDate)}>Save Task</button>
     </NewTaskFormDiv>
   )
 }

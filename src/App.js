@@ -17,11 +17,11 @@ function App() {
     localStorage.getItem("existingTaskArr") ? setTaskArr(JSON.parse(localStorage.getItem("existingTaskArr"))) : setTaskArr([])
   },[])
 
-  function addTask() {
+  function addTask(taskTitle, taskDesc, taskDate) {
     const newTask = {
-        taskTitle: "Task #1",
-        taskDesc: "Description of task #1",
-        taskDate: "12/31/2023",
+        taskTitle: taskTitle,
+        taskDesc: taskDesc,
+        taskDate: taskDate,
         taskId: Math.floor(Math.random() * 100)
     };
     const newAddTaskArr = [...taskArr, newTask]
@@ -47,7 +47,7 @@ function App() {
         <p className='new-task-icon' onClick={changeLockoutVisible}>{lockoutVisible?"x":"+"}</p>
       </div>
       {lockoutVisible ? (
-        <NewTaskForm/>
+        <NewTaskForm addTask={addTask}/>
       ) : (
         false
       )}
