@@ -26,7 +26,8 @@ function App() {
     };
     const newAddTaskArr = [...taskArr, newTask]
     setTaskArr(newAddTaskArr);
-    localStorage.setItem("existingTaskArr", JSON.stringify(newAddTaskArr))
+    localStorage.setItem("existingTaskArr", JSON.stringify(newAddTaskArr));
+    setLockoutVisible(false)
   }
 
   // Function for removing a task
